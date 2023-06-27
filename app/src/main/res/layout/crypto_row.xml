@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="crypto"
+            type="com.ruchanokal.cryptoapp.model.cyrptos.Data" />
+        <import
+            type="com.ruchanokal.cryptoapp.util.Utils" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/cryptoImageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:downloadUrl="@{String.valueOf(crypto.id)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/cryptoNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:fontFamily="@font/alata"
+            tools:text="Crypto Name"
+            android:text="@{crypto.name}"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/cryptoImageView"
+            app:layout_constraintTop_toTopOf="@+id/cryptoImageView" />
+
+        <TextView
+            android:id="@+id/cryptoSymbolText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/alata"
+            tools:text="Crypto Symbol"
+            android:text="@{crypto.symbol}"
+            app:layout_constraintStart_toEndOf="@+id/cryptoImageView"
+            app:layout_constraintTop_toBottomOf="@+id/cryptoNameText" />
+
+        <TextView
+            android:id="@+id/cryptoRateText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/alata"
+            tools:text="Crypto Rate"
+            android:text="@{Utils.cryptoRateFormat(crypto.quote.USD.price)}"
+            app:layout_constraintStart_toEndOf="@+id/cryptoImageView"
+            app:layout_constraintTop_toBottomOf="@+id/cryptoSymbolText" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
